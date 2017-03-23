@@ -1,0 +1,512 @@
+* {
+margin: 0;
+padding: 0;
+border: 0;
+}
+
+
+
+
+
+body {
+    background: #226;
+    margin: 0;
+    color: #1B1725; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2{
+    font-size: 150%;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 2%;
+    color: #F5F5F5
+}
+
+h3{
+    font-size: 175%;
+    line-height: 155%;
+    padding: 5% 0;
+    font-weight: 400;
+}
+
+
+p{
+    color: #F5F5F5;
+    font-size: 145%;
+    line-height: 110%;
+    padding: 5%;
+    text-indent: 4%;
+    text-align: justify;
+}
+
+
+
+
+header{
+background-color: #1B1725;
+width: 100%;
+height: 80px;
+}
+
+
+#header-inner{
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+#logo {
+margin: 20px;
+float: left;
+width: 200px;
+height: 60px;
+position: relative;
+bottom: 10px;
+right: 230px;
+background: url("img/logo.png") no-repeat center;
+
+}
+ /* start navigation bar*/
+ nav {
+     float: right;
+     padding: 25px 20px 0 0;
+ }
+
+ #menu-icon{
+     display: hidden;
+     width: 40px;
+     height: 40px;
+     background: url(img/menu.png) center;
+ }
+
+ a:hover#menu-icon{
+     border-radius: 4px 4px 0 0; 
+
+
+ }
+
+
+ ul{
+
+     list-style-type: none;
+ }
+
+ nav ul li {
+
+     font-size: 150%;
+     display: inline-block;
+     float: left;
+     padding: 10px;
+ }
+
+ nav ul li a{
+
+    color: #A499B3;
+    text-decoration: none;
+ }
+
+ nav ul li a:hover{
+     text-decoration: none;
+     color: blue;
+ }
+
+
+ .current{
+
+    color: #C3D7DF
+ }
+/* navigation bar style finished */
+.banner {background: url(img/newbanner.png) no-repeat center top;
+margin-top: 0px;
+padding-top: 60px;
+text-align: center;
+background-attachment: relative;
+background-position: center center;
+min-height: 480px;
+width: 100%;
+-webkit-background-size: 100%;
+-moz-background-size: 100%;
+-o-background-size: 100%;
+background-size: 100%;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+/* background-size: cover; */
+}
+
+
+.banner-inner {
+    max-width: 1100px;
+    margin: 0 auto; 
+
+}
+
+
+.icons{
+    width: 25%;
+    float: left;
+    text-align: center;
+
+}
+
+
+#Home{
+
+    background-color:#534B62;
+}
+
+#Store{
+
+background-color: #A499B3;
+
+}
+
+.icons i {
+color: #F0F0F0;
+font-size: 500%;
+padding: 13% 0 4% 0;
+
+
+}
+
+
+.inner-wrapper{
+
+float: left;
+width: 100%; 
+background-color: #C3D7DF;
+
+}
+
+article {
+float: left; 
+width: 50%;
+height: auto;
+}
+
+#ps4_div {
+
+   background-color: #C3D7DF 
+}
+
+aside{
+    float: right; 
+    margin: 0 auto;
+    width: 50%;
+    height: auto;
+}
+
+
+
+#ps42 {
+
+    background-color: #565391;
+    height: 400px;
+
+}
+
+#xbox1{
+    background-color: #1B1725;
+    height: 400px;
+}
+
+#gamingcomputer{
+    background-color: #A499B3;
+    height: 400px;
+    position: relative; 
+}
+
+.inner-wrapper-2{
+    float: left; 
+    width: 100%;
+    background-color: #C3D7DF
+}
+
+.inner-wrapper-3{
+
+float: left;
+width: 100%;
+background-color: #AADCD2;
+}
+
+.section-3{
+height: 50%;
+width: 33.3333333%;
+float: left;
+text-align: center;
+}
+
+.section-3 h3{
+
+    color: #1B1725
+}
+#accessories{
+
+    background-color: #565391;
+}
+#prices{
+    
+    background-color: #6991AC
+
+}
+
+#about{
+    background-color: #807EAF;
+}
+
+/* Start footer */
+
+footer {
+    background-color: #1E1B59;
+
+}
+
+
+/* Media Queries */
+
+   /* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .section-3 {
+        height: 20%;
+    }
+  body{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 150%;
+    }
+    h3{
+        font-size: 125%;
+    }
+    p{
+        font-size: 120%;
+    }
+    header{
+    position: absolute;
+    }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+  body{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 150%;
+    }
+    h3{
+        font-size: 125%;
+    }
+    p{
+        font-size: 120%;
+    }
+    header{
+    position: absolute;
+    }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+/* Styles */
+  body{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 150%;
+    }
+    h3{
+        font-size: 125%;
+    }
+    p{
+        font-size: 120%;
+    }
+    header{
+    position: absolute;
+    }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  body{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 150%;
+    }
+    h3{
+        font-size: 125%;
+    }
+    p{
+        font-size: 120%;
+    }
+    header{
+    position: absolute;
+    }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+  body{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 150%;
+    }
+    h3{
+        font-size: 125%;
+    }
+    p{
+        font-size: 120%;
+    }
+    header{
+    position: absolute;
+    }
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+  body{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 150%;
+    }
+    h3{
+        font-size: 125%;
+    }
+    p{
+        font-size: 120%;
+    }
+    header{
+    position: absolute;
+    }
+}
+/**********
+iPad 3
+**********/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+  body{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 150%;
+    }
+    h3{
+        font-size: 125%;
+    }
+    p{
+        font-size: 120%;
+    }
+    header{
+    position: absolute;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+  body{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 150%;
+    }
+    h3{
+        font-size: 125%;
+    }
+    p{
+        font-size: 120%;
+    }
+    header{
+    position: absolute;
+    }
+}
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+    #xboximg {
+        width: 800px;
+        height: 400px;
+    }
+    
+    #ps4img {
+  width: 800px;
+        height: 400px;
+    }
+
+    #computerimg{
+        width: 800px;
+        height: 400px;
+
+
+    }
+  body{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 150%;
+    }
+    h3{
+        font-size: 125%;
+    }
+    p{
+        font-size: 120%;
+    }
+    header{
+    position: absolute;
+    }
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+  body{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 150%;
+    }
+    h3{
+        font-size: 125%;
+    }
+    p{
+        font-size: 120%;
+    }
+    header{
+    position: absolute;
+    }
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+  body{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 150%;
+    }
+    h3{
+        font-size: 125%;
+    }
+    p{
+        font-size: 120%;
+    }
+    header{
+    position: absolute;
+    }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+  body{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 150%;
+    }
+    h3{
+        font-size: 125%;
+    }
+    p{
+        font-size: 120%;
+    }
+    header{
+    position: absolute;
+    }
+}
