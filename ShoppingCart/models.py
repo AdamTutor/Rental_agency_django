@@ -5,9 +5,20 @@ from django.db import models
 class Item(models.Model):
     name = models.CharField(max_length=30)
     price = models.CharField(max_length=30)
-    quantity = models.CharField(max_length=30)
+    quantity = models.IntegerField()
     description = models.CharField(max_length=30)
+    img = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+
+    def static_url(self):
+        return 'ShoppingCart/img/' + self.img
+
 
 
 class Brand(models.Model):
-    Brand = models.CharField(max_length=30)
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
