@@ -13,8 +13,10 @@ def store(request):
     return render(request, "ShoppingCart/store.html",{'Items': Items, 'Brands': Brands})
 
 
+
+
 def rent(request, item_id):
-    item = Item.objects.get(pk=int(item_id))
+    item = Item.objects.get(pk=item_id)
     item.quantity -= 1
     item.save()
     return redirect("store")
