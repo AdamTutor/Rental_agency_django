@@ -24,7 +24,29 @@
   
   
      <body>   
-        
+
+    
+        <!--<h1 id="main-header">{{ Brands.0.name }}</h1>-->
+{% for item in Items %}
+
+<div class="col-sm-6 col-lg-3">
+                 <p>{{ item.name }}</p>        
+                <section>
+                        
+                        <img src="{% static item.static_url %}"></img>
+                </section>
+                <aside>
+                <p>price: ${{ item.price }}</p>
+                <p>stock: {{ item.quantity }}</p>
+                </aside>
+                 <div class="button" id="ps4"><form action="{% url 'rent' item.id %}"><input type="submit" value="add to cart"><center></input></form><center></div>
+        </div>
+{% endfor %}
+    
+        <!--<h1 id="main-header">{{ Brands.0.name }}</h1>-->
+   
+
+<!--        
         <h1 id="main-header">{{ Brands.0.name }}</h1>
          <div class="col-sm-6 col-lg-3">
                  <p>{{ Items.0.name }}</p>        
@@ -164,7 +186,7 @@
                 <p>stock: {{ Items.0.quantity }}</p>
                 </aside>
                  <div class="button"><button id="laptop2"><center>add to cart</button><center></div>
-        </div>
+        </div>-->
 
       <center>  <div id="total">
         <p>Tax: $0.0</p>

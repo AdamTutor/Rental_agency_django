@@ -17,8 +17,12 @@ def store(request):
 
 def rent(request, item_id):
     item = Item.objects.get(pk=item_id)
-    item.quantity -= 1
-    item.save()
+    if item.quantity != 0:
+        item.quantity -= 1
+        item.save()
+    else: 
+        item.quantity = item.quantity
+        item.save()
     return redirect("store")
 
     
