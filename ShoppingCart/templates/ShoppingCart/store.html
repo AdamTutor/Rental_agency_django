@@ -17,15 +17,13 @@
      <nav>
             <a href="#" id="menu-icon"></a>
             <ul>
-                <li><a href="homepage.html" class="current">Home</a></li>
-                <li><a href="store.html" class="current">store</a></li>
+                <li><a href="" class="current">Home</a></li>
+                <li><a href="" class="current">store</a></li>
             </ul>
         </nav>
   
   
      <body>   
-
-    
         <!--<h1 id="main-header">{{ Brands.0.name }}</h1>-->
 {% for item in Items %}
 
@@ -39,155 +37,9 @@
                 <p>price: ${{ item.price }}</p>
                 <p>stock: {{ item.quantity }}</p>
                 </aside>
-                 <div class="button" id="ps4"><form action="{% url 'rent' item.id %}"><input type="submit" value="add to cart"><center></input></form><center></div>
+                 <div class="button" id="ps4"><form action="{% url 'rent' item.id %}"><input type="submit" value="Rent"><center></input></form><center></div>
         </div>
 {% endfor %}
-    
-        <!--<h1 id="main-header">{{ Brands.0.name }}</h1>-->
-   
-
-<!--        
-        <h1 id="main-header">{{ Brands.0.name }}</h1>
-         <div class="col-sm-6 col-lg-3">
-                 <p>{{ Items.0.name }}</p>        
-                <section>
-                        
-                        <img src="{% static Items.0.static_url %}"></img>
-                </section>
-                <aside>
-                <p>price: ${{ Items.0.price }}</p>
-                <p>stock: {{ Items.0.quantity }}</p>
-                </aside>
-                 <div class="button" id="ps4"><form action="{% url 'rent' Items.0.id %}"><input type="submit" value="add to cart"><center></input></form><center></div>
-        </div>
-         <div class="col-sm-6 col-lg-3">
-                 <p>{{ Items.1.name }}</p>          
-                <section>
-                        <img src="{% static Items.1.static_url %}"></img>
-                </section>
-                <aside>
-                <p>price: ${{ Items.1.price }}</p>
-                <p>stock: {{ Items.1.quantity }}</p>
-                </aside>
-                <div class="button" id="vr"><form action="{% url 'store' %}"><input type="submit" value="add to cart"></form><center></input><center></div>
-        </div>
-         <div class="col-sm-6 col-lg-3">
-                 <p>{{ Items.0.name }}</p>        
-                <section>
-                        <img src="{% static Items.0.static_url %}"></img>
-                </section>
-                <aside>
-                <p>price: ${{ Items.0.price }}</p>
-                <p>stock: {{ Items.0.quantity }}</p>
-                </aside>
-                 <div class="button" id="ps4_controller"><button><center>add to cart</button><center></div>
-        </div>
-         <div class="col-sm-6 col-lg-3">    
-                 <p>{{ Items.0.name }}</p>      
-                <section>
-                        <img src="{% static Items.0.static_url %}"></img>
-                </section>
-                <aside>
-                <p>price: ${{ Items.0.price }}</p>
-                <p>stock: {{ Items.0.quantity }}</p>
-                </aside>
-                 <div class="button" id="ps4_controller"><button><center>add to cart</button><center></div>
-        </div>
-        <h1>{{ Brands.1.name }}</h1>
-        <div class="col-sm-6 col-lg-3">  
-                <p>{{ Items.0.name }}</p>        
-                <section>
-                        <img src="{% static Items.0.static_url %}"></img>
-                </section>
-                <aside>
-                <p>price: ${{ Items.0.price }}</p>
-                <p>stock: {{ Items.0.quantity }}</p>
-                </aside>
-                 <div class="button" id="xbox1"><button><center>add to cart</button><center></div>
-        </div>
-         <div class="col-sm-6 col-lg-3"> 
-                 <p>{{ Items.0.name }}</p>         
-                <section>
-                        <img src="{% static Items.0.static_url %}"></img>
-                </section>
-                <aside>
-                <p>price: ${{ Items.0.price }}</p>
-                <p>stock: {{ Items.0.quantity }}</p>
-                </aside>
-                 <div class="button" id="kinect"><button><center>add to cart</button><center></div>
-        </div>
-         <div class="col-sm-6 col-lg-3">  
-                 <p>{{ Items.0.name }}</p>        
-                <section>
-                        <img src="{% static Items.0.static_url %}"></img>
-                </section>
-                <aside>
-                <p>price: ${{ Items.0.price }}</p>
-                <p>stock: {{ Items.0.quantity }}</p>
-                </aside>
-                 <div class="button" id="xbox_controller"><button><center>add to cart</button><center></div>
-        </div>
-         <div class="col-sm-6 col-lg-3">     
-                 <p>{{ Items.0.name }}</p>     
-                <section>
-                        <img src="{% static Items.0.static_url %}"></img>
-                </section>
-                <aside>
-                <p>price: ${{ Items.0.price }}</p>
-                <p>stock: {{ Items.0.quantity }}</p>
-                </aside>
-                 <div class="button"><button><center>add to cart</button><center></div>
-        </div>
-        <h1>{{ Brands.2.name }}</h1>
-         <div class="col-sm-6 col-lg-3"> 
-        <p>{{ Items.0.name }}</p>  
-                        
-                <section>
-                        <img src="{% static Items.0.static_url %}"></img>
-                </section>
-                <aside>
-                <p>price: ${{ Items.0.price }}</p>
-                <p>stock: {{ Items.0.quantity }}</p>
-                </aside>
-                 <div class="button"><button id=dt1><center>add to cart</button><center></div>
-        </div>
-         <div class="col-sm-6 col-lg-3"> 
-                 <p>{{ Items.0.name }}</p>   
-                          
-                <section>
-                        <img src="{% static Items.0.static_url %}"></img>
-                </section>
-                <aside>
-                <p>price: ${{ Items.0.price }}</p>
-                <p>stock: {{ Items.0.quantity }}</p>
-                </aside>
-                 <div class="button"><button id=dt2><center>add to cart</button><center></div>
-        </div>
-         <div class="col-sm-6 col-lg-3"> 
-                 <p>{{ Items.0.name }}</p>   
-                          
-                <section>
-                        <img src="{% static Items.0.static_url %}"></img>
-                </section>
-                <aside>
-                <p>price: ${{ Items.0.price }}</p>
-                <p>stock: {{ Items.0.quantity }}</p>
-                </aside>
-                 <div class="button"><button id="laptop1"><center>add to cart</button><center></div>
-        </div>
-         <div class="col-sm-6 col-lg-3">
-                 <p>{{ Items.0.name }}</p>  
-                            
-                <section>
-                        <img src="{% static Items.0.static_url %}"></img>
-                </section>
-                <aside>
-                <p>price: ${{ Items.0.price }}</p>
-                <p>stock: {{ Items.0.quantity }}</p>
-                </aside>
-                 <div class="button"><button id="laptop2"><center>add to cart</button><center></div>
-        </div>-->
-
       <center>  <div id="total">
         <p>Tax: $0.0</p>
         <p>total: $0</p>

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from .models import Item, Brand
 
 # Create your views here.
@@ -7,10 +8,11 @@ def home(request):
 
 
 def store(request):
+    counter = 0
     Items = Item.objects.all()
     Brands = Brand.objects.all()
     print(len(Items[0].img))
-    return render(request, "ShoppingCart/store.html",{'Items': Items, 'Brands': Brands})
+    return render(request, "ShoppingCart/store.html",{'Items': Items, 'Brands': Brands, 'counter': counter})
 
 
 
@@ -23,7 +25,7 @@ def rent(request, item_id):
     else: 
         item.quantity = item.quantity
         item.save()
-    return redirect("store")
+    return HttpResponse(item)
 
     
 
