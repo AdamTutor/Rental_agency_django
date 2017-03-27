@@ -1,7 +1,5 @@
 var total = 0;
 var button_ids = ['ps4', 'vr', 'ps4_controller','a', 'xbox1', 'kinect','xbox_controller','b','dt1','dt2',"laptop1", "laptop2", "ps4_motion", "xbox1_console","keyboard"]
-
-
 function addToCart(name){
     var item = name;
     $('#receipt').append("<p>" + item + "</p>")

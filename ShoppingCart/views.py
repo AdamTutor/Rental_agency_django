@@ -24,13 +24,20 @@ def rent(request, item_id):
     if item.quantity != 0:
         item.quantity -= 1
         item.save()
-        messages.success(request, "Huge success!")
+        messages.success(request, item.name+" has been successfully purchased")
     else: 
         item.quantity = item.quantity
         item.save()
+        messages.warning(request, item.name+" is out of stock")
     return redirect("store")
 
     
 
+def return_item(request, item_id):
+    item = Item.objects.get(pk=item_id)
+    item.quantity += 1
+    item.save()
+    messages.success(request, item.name+" has been successfully returned")
+    return redirect("store")
 
     
