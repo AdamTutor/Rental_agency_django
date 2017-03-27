@@ -23,7 +23,7 @@
         </nav>
   
   
-     <body>   
+     <body>
         <!--<h1 id="main-header">{{ Brands.0.name }}</h1>-->
         {% for message in messages %}
     <div class="alert alert-{{ message.tags }}">{{ message }}</div>
@@ -40,7 +40,8 @@
                 <p>price: ${{ item.price }}</p>
                 <p>stock: {{ item.quantity }}</p>
                 </aside>
-                 <div class="button" id="ps4"><form action="{% url 'rent' item.id %}"><input type="submit" value="Rent"><center></input></form><center></div>
+                 <div class="button"><form action="{% url 'rent' item.id %}"><input id="{{item.name}}" type="submit" value="Rent"><center></input></form><center></div>
+                  <div class="button"><form action="{% url 'return' item.id %}"><input type="submit" value="Return"><center></input></form></div>
         </div>
 {% endfor %}
       <center>  <div id="total">
@@ -50,6 +51,22 @@
         <div id="receipt"></div>
         <div id="total_price">0</div>
         </div></center>
+
+        <button id="test">I AM A BUTTON</button>
+
+
+
+
+<script>
+ShoppingCart = []
+$(document).ready(function(){
+        $( "input" ).click(function() {
+  alert(ShoppingCart.push(this.id));
+  alert(ShoppingCart)
+});
+});
+
+</script>
 
 
 <footer id="footer">
