@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Item, Brand
+from django.contrib import messages
+
 
 # Create your views here.
 def home(request):
@@ -22,10 +24,11 @@ def rent(request, item_id):
     if item.quantity != 0:
         item.quantity -= 1
         item.save()
+        messages.success(request, "Huge success!")
     else: 
         item.quantity = item.quantity
         item.save()
-    return HttpResponse(item)
+    return redirect("store")
 
     
 

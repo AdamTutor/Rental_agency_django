@@ -25,6 +25,9 @@
   
      <body>   
         <!--<h1 id="main-header">{{ Brands.0.name }}</h1>-->
+        {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+{% endfor %}
 {% for item in Items %}
 
 <div class="col-sm-6 col-lg-3">
