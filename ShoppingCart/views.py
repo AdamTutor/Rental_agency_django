@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Item, Brand
 from django.contrib import messages
+import json
 
 
 # Create your views here.
@@ -10,11 +11,12 @@ def home(request):
 
 
 def store(request):
-    counter = 0
     Items = Item.objects.all()
+    item_dicts = {item.name: item.to_dict() for item in Items}
     Brands = Brand.objects.all()
-    print(len(Items[0].img))
-    return render(request, "ShoppingCart/store.html",{'Items': Items, 'Brands': Brands, 'counter': counter})
+    Json_dump = json.dumps(item_dicts)
+    # print(Json_dump)
+    return render(request, "ShoppingCart/store.html",{'Items': Items, 'Brands': Brands, 'Json_dump': Json_dump})
 
 
 

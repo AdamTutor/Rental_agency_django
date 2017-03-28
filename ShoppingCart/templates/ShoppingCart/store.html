@@ -40,8 +40,8 @@
                 <p>price: ${{ item.price }}</p>
                 <p>stock: {{ item.quantity }}</p>
                 </aside>
-                 <div class="button"><form action="{% url 'rent' item.id %}"><input id="{{item.name}}" type="submit" value="Rent"><center></input></form><center></div>
-                  <div class="button"><form action="{% url 'return' item.id %}"><input type="submit" value="Return"><center></input></form></div>
+                 <div class="button"><input class="rent" id="{{item.name}}" type="submit" value="Rent"><center></input><center></div>
+                  <div class="button"><input class="return" type="submit" value="Return"><center></input></div>
         </div>
 {% endfor %}
       <center>  <div id="total">
@@ -50,27 +50,31 @@
         <button  id="submit">submit</button>
         <div id="receipt"></div>
         <div id="total_price">0</div>
+                <button id="test">I AM A BUTTON</button>
         </div></center>
-
-        <button id="test">I AM A BUTTON</button>
 
 
 
 
 <script>
-ShoppingCart = []
-$(document).ready(function(){
-        $( "input" ).click(function() {
-  alert(ShoppingCart.push(this.id));
-  alert(ShoppingCart)
+var ShoppingCart = []
+$("input").click(function(){
+var name = this.id;
+ShoppingCart.push(data[name])
+
+
+
 });
+var data = {{ Json_dump|safe }}
+$("#test").click(function(){
+        console.log(ShoppingCart)
+
+
 });
 
 </script>
 
 
-<footer id="footer">
-<p>&copy; Adam Tutor</br></p>
-</footer>
 
-        <html>
+<footer id="footer">
+</footer>        <html>

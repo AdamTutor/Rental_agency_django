@@ -14,6 +14,13 @@ class Item(models.Model):
 
     def static_url(self):
         return 'ShoppingCart/img/' + self.img
+    
+    def to_dict(self):
+        return {'name': self.name,
+                    'price': self.price,
+                    'quantity': self.quantity,
+                    'description': self.description,
+        'img': self.img}
 
 
 
