@@ -47,10 +47,11 @@
       <center>  <div id="total">
         <p>Tax: $0.0</p>
         <p>total: $0</p>
-        <button  id="submit">submit</button>
+        <form id="submit" action="url" method=POST>
+        <input type="submit" >checkout</input>
+        </form>
         <div id="receipt"></div>
         <div id="total_price">0</div>
-                <button id="test">I AM A BUTTON</button>
         </div></center>
 
 
@@ -58,16 +59,53 @@
 
 <script>
 var ShoppingCart = []
-$("input").click(function(){
+var data = {{ Json_dump|safe }}
+$(".rent").click(function(){
 var name = this.id;
 ShoppingCart.push(data[name])
 
 
 
 });
-var data = {{ Json_dump|safe }}
-$("#test").click(function(){
-        console.log(ShoppingCart)
+
+$.ajaxSetup({ 
+     beforeSend: function(xhr, settings) {
+         function getCookie(name) {
+             var cookieValue = null;
+             if (document.cookie && document.cookie != '') {
+                 var cookies = document.cookie.split(';');
+                 for (var i = 0; i < cookies.length; i++) {
+                     var cookie = jQuery.trim(cookies[i]);
+                     // Does this cookie string begin with the name we want?
+                     if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                         break;
+                     }
+                 }
+             }
+             return cookieValue;
+         }
+         if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+             // Only send the token to relative URLs i.e. locally.
+             xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+         }
+     } 
+});
+
+$("#submit").click(function() {
+ $.ajax({
+   url: '/cart/',
+   type: 'POST',
+   data: JSON.stringify({data: ShoppingCart}),
+   contentType:'application/json',
+   complete: function(){
+       var url = "/store/";
+    $(location).attr('href',url)}
+ });
+ 
+ return false;
+
+
 
 
 });

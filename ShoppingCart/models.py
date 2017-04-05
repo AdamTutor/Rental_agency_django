@@ -29,3 +29,10 @@ class Brand(models.Model):
 
     def __str__(self):
         return self.name
+
+class ShoppingCart(models.Model):
+    name = models.CharField(max_length=30)
+    price = models.IntegerField()
+    
+    def __str__(self):
+        return self.name

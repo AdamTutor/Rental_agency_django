@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Item, Brand
+from .models import Item, Brand, ShoppingCart
 from django.contrib import messages
 import json
 
@@ -37,9 +37,34 @@ def rent(request, item_id):
 
 def return_item(request, item_id):
     item = Item.objects.get(pk=item_id)
+    if request.method == 'POST':
+        cart_item = ShoppingCart.objects.all()
+        context = {"cart": cart_item}
+        a = request.POST
+        b = str(a)
+        print(json.loads(b))
+        return render(request, "ShoppingCart/cart.html", context)
+
+    
     item.quantity += 1
     item.save()
     messages.success(request, item.name+" has been successfully returned")
     return redirect("store")
 
-    
+# def cart(request):
+#     if request.method == 'POST':
+#         cart_item = ShoppingCart.objects.all()
+#         context = {"cart": cart_item}
+#         a = request.POST
+#         b = str(a)
+#         print(json.loads(b))
+#         return render(request, "ShoppingCart/cart.html", context)
+
+def cart(request):
+    if request.method == 'POST':
+        cart_items = json.loads(request.body.decode("utf-8"))
+        for item in cart_items['data']:
+            # print(item['name'],item['name'],item['price'],item['quantity'],item['description'],item['img'])
+            a = Item(name=item['name'],price=item['price'],quantity=item['quantity'],description=item['description'],img=item['img'])
+            print(a.name)
+        return HttpResponse("success")
