@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Item, Brand, ShoppingCart
+from .models import Item, Brand
 from django.contrib import messages
 import json
 
 
 # Create your views here.
 def home(request):
-    return render(request, "ShoppingCart/homepage.html")
+    response = render(request, "ShoppingCart/homepage.html")
+    print(response.content.decode('utf-8'))
+    return response
 
 
 def store(request):
@@ -61,10 +63,13 @@ def return_item(request, item_id):
 #         return render(request, "ShoppingCart/cart.html", context)
 
 def cart(request):
-    if request.method == 'POST':
-        cart_items = json.loads(request.body.decode("utf-8"))
-        for item in cart_items['data']:
-            # print(item['name'],item['name'],item['price'],item['quantity'],item['description'],item['img'])
-            a = Item(name=item['name'],price=item['price'],quantity=item['quantity'],description=item['description'],img=item['img'])
-            print(a.name)
-        return HttpResponse("success")
+    items = []
+    cart_items = json.loads(request.body.decode("utf-8"))
+    for item in cart_items['data']:
+        # print(item['name'],item['name'],item['price'],item['quantity'],item['description'],item['img'])
+        a = Item(name=item['name'],price=item['price'],quantity=item['quantity'],description=item['description'],img=item['img'])
+        items.append(a)
+        print(items)
+    return render(request, "ShoppingCart/cart.html", {"cart": items})
+    print(response.content.decode('utf-8'))
+    return response

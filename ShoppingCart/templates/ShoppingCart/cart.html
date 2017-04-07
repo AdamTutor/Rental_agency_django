@@ -1,3 +1,27 @@
+{% load static %}
+
+<h1>Shopping Cart</h1>
+
+
+
+<table>
 {% for item in cart %}
-<p>{{ item }}</p>
+
+<tr>
+<div id="Cart_item">
+<img id="Cart_img" src="{% static item.static_url %}">
+<p>{{ item.name }}</p>
+<p>{{ item.price }}</p>
+</tr>
+
 {% endfor %}
+</table>
+</div>
+
+
+
+
+
+
+
+<input class="checkout" type="submit" value="Checkout"></input>

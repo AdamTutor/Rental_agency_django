@@ -30,9 +30,9 @@ class Brand(models.Model):
     def __str__(self):
         return self.name
 
-class ShoppingCart(models.Model):
-    name = models.CharField(max_length=30)
-    price = models.IntegerField()
+# class ShoppingCart(models.Model):
+    # name = models.CharField(max_length=30)
+    # item = models.ForeignKey(Item, on_delete=models.CASCADE)
     
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name

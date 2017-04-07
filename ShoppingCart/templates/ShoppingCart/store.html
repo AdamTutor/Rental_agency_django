@@ -98,16 +98,12 @@ $("#submit").click(function() {
    type: 'POST',
    data: JSON.stringify({data: ShoppingCart}),
    contentType:'application/json',
-   complete: function(){
-       var url = "/store/";
-    $(location).attr('href',url)}
- });
- 
+   success: function(data){
+        $("body").html(data).addClass("cart_body");
+
+    }
+ })
  return false;
-
-
-
-
 });
 
 </script>
