@@ -62,14 +62,30 @@ def return_item(request, item_id):
 #         print(json.loads(b))
 #         return render(request, "ShoppingCart/cart.html", context)
 
+# def cart(request):
+#     items = []
+#     cart_items = json.loads(request.body.decode("utf-8"))
+#     for item in cart_items['data']:
+#         # print(item['name'],item['name'],item['price'],item['quantity'],item['description'],item['img'])
+#         a = Item(name=item['name'],price=item['price'],quantity=item['quantity'],description=item['description'],img=item['img'])
+#         items.append(a)
+#         print(items)
+#     return render(request, "ShoppingCart/cart.html", {"cart": items})
+#     print(response.content.decode('utf-8'))
+#     return response
+
+
 def cart(request):
-    items = []
+    items_ = []
     cart_items = json.loads(request.body.decode("utf-8"))
     for item in cart_items['data']:
         # print(item['name'],item['name'],item['price'],item['quantity'],item['description'],item['img'])
-        a = Item(name=item['name'],price=item['price'],quantity=item['quantity'],description=item['description'],img=item['img'])
-        items.append(a)
-        print(items)
-    return render(request, "ShoppingCart/cart.html", {"cart": items})
-    print(response.content.decode('utf-8'))
-    return response
+        a = Item.objects.get(pk=item)
+        items_.append(a)
+    print(cart_items)
+    items = Item.objects.filter(id__in=cart_items["data"])
+    print(items)
+    for item in items:
+        item.rent()
+        print(item)
+    return render(request, "ShoppingCart/cart.html", {"cart": items_})

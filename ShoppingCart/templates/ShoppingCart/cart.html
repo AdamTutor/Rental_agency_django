@@ -7,11 +7,12 @@
 <table>
 {% for item in cart %}
 
+
 <tr>
 <div id="Cart_item">
 <img id="Cart_img" src="{% static item.static_url %}">
-<p>{{ item.name }}</p>
-<p>{{ item.price }}</p>
+<p>Item: {{ item.name }}</p>
+<p>Price: ${{ item.price }}</p>
 </tr>
 
 {% endfor %}
@@ -24,4 +25,59 @@
 
 
 
+
 <input class="checkout" type="submit" value="Checkout"></input>
+
+
+
+
+<script>
+var ShoppingCart = []
+var data = {{ Json_dump|safe }}
+$(".rent").click(function(){
+var name = this.id;
+ShoppingCart.push(Number(this.id))
+
+
+
+});
+
+$.ajaxSetup({ 
+     beforeSend: function(xhr, settings) {
+         function getCookie(name) {
+             var cookieValue = null;
+             if (document.cookie && document.cookie != '') {
+                 var cookies = document.cookie.split(';');
+                 for (var i = 0; i < cookies.length; i++) {
+                     var cookie = jQuery.trim(cookies[i]);
+                     // Does this cookie string begin with the name we want?
+                     if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                         break;
+                     }
+                 }
+             }
+             return cookieValue;
+         }
+         if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+             // Only send the token to relative URLs i.e. locally.
+             xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+         }
+     } 
+});
+
+$("#submit").click(function() {
+ $.ajax({
+   url: '/cart/',
+   type: 'POST',
+   data: JSON.stringify({data: ShoppingCart}),
+   contentType:'application/json',
+   success: function(data){
+        $("body").html(data).addClass("cart_body");
+
+    }
+ })
+ return false;
+});
+
+</script>

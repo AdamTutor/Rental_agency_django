@@ -23,6 +23,12 @@
         </nav>
   
   
+{% if user.is_authenticated %}
+        <p>Welcome {{ user.username }} !!!</p>       
+    {% endif %}
+
+
+
      <body>
         <!--<h1 id="main-header">{{ Brands.0.name }}</h1>-->
         {% for message in messages %}
@@ -40,7 +46,7 @@
                 <p>price: ${{ item.price }}</p>
                 <p>stock: {{ item.quantity }}</p>
                 </aside>
-                 <div class="button"><input class="rent" id="{{item.name}}" type="submit" value="Rent"><center></input><center></div>
+                 <div class="button"><input class="rent" id="{{item.id}}" type="submit" value="Rent"><center></input><center></div>
                   <div class="button"><input class="return" type="submit" value="Return"><center></input></div>
         </div>
 {% endfor %}
@@ -62,7 +68,7 @@ var ShoppingCart = []
 var data = {{ Json_dump|safe }}
 $(".rent").click(function(){
 var name = this.id;
-ShoppingCart.push(data[name])
+ShoppingCart.push(Number(this.id))
 
 
 

@@ -12,6 +12,22 @@ class Item(models.Model):
     def __str__(self):
         return self.name
 
+    def rent(self):
+        if self.quantity > 0:
+            self.quantity -= 1
+            self.save()
+            return True
+        else:
+            return False
+
+    def return_item(self):
+        if self.quantity > 0:
+            self.quantity += 1
+            self.save()
+            return True
+        else:
+            return False
+            
     def static_url(self):
         return 'ShoppingCart/img/' + self.img
     
