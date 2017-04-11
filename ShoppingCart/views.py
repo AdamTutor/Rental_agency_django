@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Item, Brand
 from django.contrib import messages
 import json
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
@@ -11,7 +11,7 @@ def home(request):
     print(response.content.decode('utf-8'))
     return response
 
-
+@login_required(login_url="/login/")
 def store(request):
     Items = Item.objects.all()
     item_dicts = {item.name: item.to_dict() for item in Items}
@@ -76,16 +76,15 @@ def return_item(request, item_id):
 
 
 def cart(request):
-    items_ = []
+    # items_ = []
     cart_items = json.loads(request.body.decode("utf-8"))
-    for item in cart_items['data']:
+    # for item in cart_items['data']:
         # print(item['name'],item['name'],item['price'],item['quantity'],item['description'],item['img'])
-        a = Item.objects.get(pk=item)
-        items_.append(a)
+        # a = Item.objects.get(pk=item)
+        # items_.append(a)
     print(cart_items)
     items = Item.objects.filter(id__in=cart_items["data"])
-    print(items)
     for item in items:
         item.rent()
         print(item)
-    return render(request, "ShoppingCart/cart.html", {"cart": items_})
+    return render(request, "ShoppingCart/cart.html", {"cart": items})
