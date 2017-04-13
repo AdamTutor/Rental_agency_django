@@ -12,15 +12,14 @@ function Total(total){
      $("#total_price").append(total)
 }
 
-
-
 $(document).ready(function(){
     $("button").click(function(){
         
 if (button_ids.includes(this.id)){
     addToCart(this.id)
 };
-if (this.id == 'ps4' || 'xbox1' || 'dt1' || 'dt2' || 'laptop1' || 'laptop2'){
+if (this.id == 'ps4' || 'xbox1' || 'dt1'
+         || 'dt2' || 'laptop1' || 'laptop2'){
 total += 3
 }
 else if (this.id="total_price") {
@@ -29,7 +28,6 @@ else if (this.id="total_price") {
 else{
     total += 1
 }
-
 
 
 $('#submit').click(function(){

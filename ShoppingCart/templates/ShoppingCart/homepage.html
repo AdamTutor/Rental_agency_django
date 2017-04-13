@@ -14,8 +14,11 @@
         <nav>
             <a href="#" id="menu-icon"></a>
             <ul>
-                <li><a href="homepage.html" class="current">Home</a></li>
-                <li><a href="store.html" class="current">store</a></li>
+                <li><a href="{% url 'home' %}" class="current">Home</a></li>
+                <li><a href="{% url 'store' %}" class="current">store</a></li>
+                 <li><a href="{% url 'login' %}" class="current">login</a></li>
+                <li><a href="{% url 'register' %}" class="current">register</a></li>
+                <li><a href="{% url 'logout' %}" class="current">logout</a></li>
             </ul>
         </nav>
     </div>
@@ -47,7 +50,7 @@
 <!--Logo section-->
 <section class="inner-wrapper">
      <article id="ps4_div">
-         <img src="img/ps4.jpg" id="ps4img">
+         <img src="{% static "ShoppingCart/img/ps4.jpg" %}" id="ps4img">
      </article>
      <aside id="ps42">
          <h2>Ps4</h2>
@@ -60,13 +63,13 @@
         <p>The Xbox1 stands as microsofts greatest console to date.You can rent a console along with headsets, additional controllers, and a xbox kinect. We have the early release models as well as the slim models. Consoles rented will be randomly assigned to customers. </p>
     </article> 
     <aside>
-<img src="img/xbox1.jpg" id="xboximg">
+<img src="{% static "ShoppingCart/img/xbox1.jpg" %}" id="xboximg">
 
     </aside>
 </section>
 <section class="inner-wrapper">
     <article>
-        <img src="img/gamingcomputer.jpg" id="computerimg">
+        <img src="{% static "ShoppingCart/img/gamingcomputer.jpg" %}" id="computerimg">
     </article>
     <aside id="gamingcomputer">
         <h2>Gaming Computer</h2>

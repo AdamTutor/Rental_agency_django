@@ -17,13 +17,19 @@
      <nav>
             <a href="#" id="menu-icon"></a>
             <ul>
-                <li><a href="" class="current">Home</a></li>
-                <li><a href="" class="current">store</a></li>
+                <li><a href="{% url 'home' %}" class="current">Home</a></li>
+                <li><a href="{% url 'store' %}" class="current">store</a></li>
             </ul>
         </nav>
   
   
-     <body>   
+{% if user.is_authenticated %}
+        <p>Welcome {{ user.username }} !!!</p>       
+    {% endif %}
+
+
+
+     <body>
         <!--<h1 id="main-header">{{ Brands.0.name }}</h1>-->
         {% for message in messages %}
     <div class="alert alert-{{ message.tags }}">{{ message }}</div>
@@ -40,20 +46,75 @@
                 <p>price: ${{ item.price }}</p>
                 <p>stock: {{ item.quantity }}</p>
                 </aside>
-                 <div class="button" id="ps4"><form action="{% url 'rent' item.id %}"><input type="submit" value="Rent"><center></input></form><center></div>
+                 <div class="button"><input class="rent" id="{{item.id}}" type="submit" value="Rent"><center></input><center></div>
+                  <div class="button"><input class="return" type="submit" value="Return"><center></input></div>
         </div>
 {% endfor %}
       <center>  <div id="total">
-        <p>Tax: $0.0</p>
-        <p>total: $0</p>
-        <button  id="submit">submit</button>
-        <div id="receipt"></div>
-        <div id="total_price">0</div>
+        <!--<p>Tax: $0.0</p>
+        <p>total: $0</p>-->
+        <form id="submit" action="url" method=POST>
+        <input type="submit" value="checkout"></input>
+        </form>
+        <!--<div id="receipt"></div>
+        <div id="total_price">0</div>-->
         </div></center>
 
 
-<footer id="footer">
-<p>&copy; Adam Tutor</br></p>
-</footer>
 
-        <html>
+
+<script>
+var ShoppingCart = []
+var data = {{ Json_dump|safe }}
+$(".rent").click(function(){
+var name = this.id;
+ShoppingCart.push(Number(this.id))
+
+
+
+});
+
+$.ajaxSetup({ 
+     beforeSend: function(xhr, settings) {
+         function getCookie(name) {
+             var cookieValue = null;
+             if (document.cookie && document.cookie != '') {
+                 var cookies = document.cookie.split(';');
+                 for (var i = 0; i < cookies.length; i++) {
+                     var cookie = jQuery.trim(cookies[i]);
+                     // Does this cookie string begin with the name we want?
+                     if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                         break;
+                     }
+                 }
+             }
+             return cookieValue;
+         }
+         if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+             // Only send the token to relative URLs i.e. locally.
+             xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+         }
+     } 
+});
+
+$("#submit").click(function() {
+ $.ajax({
+   url: '/cart/',
+   type: 'POST',
+   data: JSON.stringify({data: ShoppingCart}),
+   contentType:'application/json',
+   success: function(data){
+        $("body").html(data).addClass("cart_body");
+
+    }
+ })
+ return false;
+});
+
+</script>
+
+
+
+<footer id="footer">
+</footer>        <html>
