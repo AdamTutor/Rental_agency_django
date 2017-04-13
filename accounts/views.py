@@ -30,7 +30,7 @@ def login_view(request):
             login(request, user)
             return redirect("store")
         else:
-            return HttpResponse("you didnt log in")
+            return redirect("login")
     else:
         return render(request, "accounts/login.html", {"form":myform})
             
@@ -44,12 +44,15 @@ def login_view(request):
 def register_view(request):
     myform = UserRegisterForm(request.POST or None)
     if myform.is_valid():
+        Loginform = UserLoginForm()
         data = myform.cleaned_data
         username = data["username"]
         email = data["email"]
         password = data["password"]
         user = User.objects.create_user(username, email, password)
         user.save()
+        login(request, user)
+        return redirect("store")
     return render(request, "accounts/login.html", {"form":myform})
 
 
