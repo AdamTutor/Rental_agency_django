@@ -17,8 +17,8 @@
      <nav>
             <a href="#" id="menu-icon"></a>
             <ul>
-                <li><a href="" class="current">Home</a></li>
-                <li><a href="" class="current">store</a></li>
+                <li><a href="{% url 'home' %}" class="current">Home</a></li>
+                <li><a href="{% url 'store' %}" class="current">store</a></li>
             </ul>
         </nav>
   
@@ -51,13 +51,13 @@
         </div>
 {% endfor %}
       <center>  <div id="total">
-        <p>Tax: $0.0</p>
-        <p>total: $0</p>
+        <!--<p>Tax: $0.0</p>
+        <p>total: $0</p>-->
         <form id="submit" action="url" method=POST>
-        <input type="submit" >checkout</input>
+        <input type="submit" value="checkout"></input>
         </form>
-        <div id="receipt"></div>
-        <div id="total_price">0</div>
+        <!--<div id="receipt"></div>
+        <div id="total_price">0</div>-->
         </div></center>
 
 
